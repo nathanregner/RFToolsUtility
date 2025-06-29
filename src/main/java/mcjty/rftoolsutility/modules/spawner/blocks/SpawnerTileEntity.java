@@ -211,11 +211,15 @@ public class SpawnerTileEntity extends TickingTileEntity {
         return true;
     }
 
+    public SpawnerData getSpawnerData() {
+        return getData(SpawnerModule.SPAWNER_DATA);
+    }
+
     @Nullable
-    private SpawnerRecipes.MobData getMobData() {
+    public SpawnerRecipes.MobData getMobData() {
         SpawnerData data = getData(SpawnerModule.SPAWNER_DATA);
         SpawnerRecipes.MobData mobData = SpawnerRecipes.getMobData(level, data.mob());
-        if (mobData == null) {
+        if (data.mob() != null && mobData == null) {
             Logging.logError("The mob spawn amounts list for mob " + data.mob() + " is missing!");
         }
         return mobData;

@@ -1,10 +1,12 @@
 package mcjty.rftoolsutility;
 
+import dan200.computercraft.api.ComputerCraftAPI;
 import mcjty.lib.datagen.DataGen;
 import mcjty.lib.modules.Modules;
 import mcjty.rftoolsbase.api.screens.IScreenModuleRegistry;
 import mcjty.rftoolsbase.api.teleportation.ITeleportationManager;
 import mcjty.rftoolsutility.apiimpl.teleportation.TeleportationManager;
+import mcjty.rftoolsutility.modules.cc_tweaked.CCTweakedModule;
 import mcjty.rftoolsutility.modules.crafter.CrafterModule;
 import mcjty.rftoolsutility.modules.environmental.EnvironmentalModule;
 import mcjty.rftoolsutility.modules.logic.LogicBlockModule;
@@ -19,13 +21,13 @@ import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.InterModProcessEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.energy.ComponentEnergyStorage;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -93,6 +95,9 @@ public class RFToolsUtility {
         modules.register(new TankModule(bus, dist));
         modules.register(new TeleporterModule(bus));
         modules.register(new EnvironmentalModule(bus, dist));
+        if (ModList.get().isLoaded(ComputerCraftAPI.MOD_ID)) {
+            modules.register(new CCTweakedModule());
+        }
     }
 
     private void onRegisterCapabilities(RegisterCapabilitiesEvent event) {

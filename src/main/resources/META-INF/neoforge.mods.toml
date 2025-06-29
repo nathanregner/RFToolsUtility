@@ -37,3 +37,15 @@ Generic RFTools utilities
     versionRange="[1.21-6.0.6,)"
     ordering="AFTER"
     side="BOTH"
+#[[dependencies.cc-tweaked]]
+#    modId="cc-tweaked"
+#    mandatory=false
+#    versionRange="[1.21-6.0.6,)"
+#    ordering="AFTER"
+#    side="BOTH"
+
+#[[dependencies.enderio_conduits_modded]]
+#    modId="mekanism"
+#    type="optional"
+#    versionRange="${mekanism_version_range}"
+#    side="BOTH"
