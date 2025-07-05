@@ -90,17 +90,18 @@ public class MatterBeamerTileEntity extends TickingTileEntity {
         super(SpawnerModule.MATTER_BEAMER.be().get(), pos, state);
     }
 
-    public boolean isPowered() {
-        return powerLevel != 0;
-    }
-
     public boolean isGlowing() {
         return glowing;
     }
 
     @Override
+    protected boolean needsRedstoneMode() {
+        return true;
+    }
+
+    @Override
     protected void tickServer() {
-        if (powerLevel == 0) {
+        if (!isMachineEnabled()) {
             disableBlockGlow();
             return;
         }
@@ -234,6 +235,7 @@ public class MatterBeamerTileEntity extends TickingTileEntity {
     /**
      * Get the current destination. This function checks first if that destination is
      * still valid and if not it is reset to null (i.e. the destination was removed).
+     *
      * @return the destination TE or null if there is no valid one
      */
     private SpawnerTileEntity getDestinationTE() {
@@ -260,6 +262,7 @@ public class MatterBeamerTileEntity extends TickingTileEntity {
         super.loadAdditional(tag, provider);
         destination = BlockPosTools.read(tag, "dest");
         glowing = tag.getBoolean("glowing");
+        glowing = tag.getBoolean("enabled");
         energyStorage.load(tag, "energy", provider);
         items.load(tag, "items", provider);
         infusable.load(tag, "infusable");
