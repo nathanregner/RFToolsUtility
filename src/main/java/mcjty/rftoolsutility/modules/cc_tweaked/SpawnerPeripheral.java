@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static mcjty.rftoolsutility.modules.spawner.SpawnerModule.SPAWNER;
 
-class SpawnerPeripheral implements GenericPeripheral {
+final class SpawnerPeripheral implements GenericPeripheral {
 
     @Override
     public String id() {

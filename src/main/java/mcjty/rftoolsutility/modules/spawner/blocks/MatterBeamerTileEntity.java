@@ -56,7 +56,7 @@ public class MatterBeamerTileEntity extends TickingTileEntity {
     public static final int SLOT_MATERIAL = 0;
 
     public static final Lazy<ContainerFactory> CONTAINER_FACTORY = Lazy.of(() -> new ContainerFactory(1)
-        .slot(generic().in(), SLOT_MATERIAL, 28, 8)
+        .slot(generic().in().out(), SLOT_MATERIAL, 28, 8)
         .playerSlots(10, 70));
 
     private final GenericItemHandler items = GenericItemHandler.basic(this, CONTAINER_FACTORY);

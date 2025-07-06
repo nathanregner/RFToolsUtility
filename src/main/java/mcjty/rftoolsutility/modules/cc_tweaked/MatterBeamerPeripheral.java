@@ -7,7 +7,7 @@ import mcjty.rftoolsutility.modules.spawner.blocks.MatterBeamerTileEntity;
 
 import static mcjty.rftoolsutility.modules.spawner.SpawnerModule.MATTER_BEAMER;
 
-class MatterBeamerPeripheral implements GenericPeripheral {
+final class MatterBeamerPeripheral implements GenericPeripheral {
 
     @Override
     public String id() {
